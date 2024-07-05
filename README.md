@@ -7,7 +7,7 @@ This is a repo for the KMBox Linux project. The goal of this project is to creat
 #### 1. Clone the repo
 #### 2. Use it in your C++ project
 ```cpp
-#include "kmbox.h"
+#include "kmboxNet.h"
 ...
 ```
 #### (Optional) 3. Build it to a static library

@@ -1,0 +1,34 @@
+#name: Build Dynamic Library on Linux x86_64
+#
+#on:
+#  push:
+#    branches:
+#      - master
+#  pull_request:
+#    branches:
+#      - master
+#
+#jobs:
+#  build:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#    - name: Checkout source code
+#      uses: actions/checkout@v2
+#
+#    - name: Set up environment
+#      run: sudo apt-get update && sudo apt-get install -y g++ gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+#
+#    - name: Build library on Linux x86_64
+#      run: |
+#        g++ -fPIC -c kmboxNet.cpp -o kmboxNet.o -lpthread
+#        g++ -fPIC -c my_enc.cpp -o my_enc.o
+#        g++ -shared -o libkmbox_x86.so kmboxNet.o my_enc.o -lpthread
+#
+#    - name: Archive artifacts
+#      uses: actions/upload-artifact@v2
+#      with:
+#        name: dynamic-libraries
+#        path: |
+#          libkmbox_x86.so
+#        if-no-files-found: ignore

@@ -26,7 +26,7 @@ jobs:
         aarch64-linux-gnu-g++ -shared -o libkmbox_aarch64.so kmboxNet.o my_enc.o -lpthread
 
     - name: Archive artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: dynamic-libraries
         path: |

@@ -1,36 +1,36 @@
-name: Build Dynamic Library on Windows
-
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
-
-jobs:
-  build:
-    runs-on: windows-latest
-
-    steps:
-    - name: Checkout source code
-      uses: actions/checkout@v2
-
-    - name: Set up environment
-      uses: chrislennon/action-install-vc-redist@v1
-      with:
-        arch: x64
-
-    - name: Build library on Windows
-      run: |
-        g++ -c kmboxNet.cpp -o kmboxNet.o -lpthread
-        g++ -c my_enc.cpp -o my_enc.o
-        g++ -shared -o kmboxNet.dll kmboxNet.o my_enc.o -lpthread
-
-    - name: Archive artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: dynamic-libraries
-        path: |
-          kmboxNet.dll
-        if-no-files-found: ignore
+#name: Build Dynamic Library on Windows
+#
+#on:
+#  push:
+#    branches:
+#      - master
+#  pull_request:
+#    branches:
+#      - master
+#
+#jobs:
+#  build:
+#    runs-on: windows-latest
+#
+#    steps:
+#    - name: Checkout source code
+#      uses: actions/checkout@v2
+#
+#    - name: Set up environment
+#      uses: chrislennon/action-install-vc-redist@v1
+#      with:
+#        arch: x64
+#
+#    - name: Build library on Windows
+#      run: |
+#        g++ -c kmboxNet.cpp -o kmboxNet.o -lpthread
+#        g++ -c my_enc.cpp -o my_enc.o
+#        g++ -shared -o kmboxNet.dll kmboxNet.o my_enc.o -lpthread
+#
+#    - name: Archive artifacts
+#      uses: actions/upload-artifact@v2
+#      with:
+#        name: dynamic-libraries
+#        path: |
+#          kmboxNet.dll
+#        if-no-files-found: ignore
